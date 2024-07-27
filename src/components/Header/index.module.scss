@@ -1,0 +1,43 @@
+@import "../../helpers/css/constants.scss";
+
+.root {
+  background-color: $color-primary;
+  color: white;
+  padding: 18px 60px;
+  filter: drop-shadow(rgba(33, 0, 28, 0.2) 0px 2px 16px);
+  @media screen and (max-width: 420px) {
+    padding: 18px 20px;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  & a {
+    transition: 0.2s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  font-size: 14px;
+  margin: 0;
+  & > li {
+    margin-right: 12px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  @media screen and (max-width: 420px) {
+    font-size: 18px;
+  }
+}

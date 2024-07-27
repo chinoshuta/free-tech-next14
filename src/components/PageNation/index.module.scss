@@ -1,0 +1,33 @@
+@import "../../helpers/css/constants.scss";
+
+.page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.item {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  transition: 0.4s;
+  &:hover {
+    background-color: $color-primary;
+    color: #ffffff;
+  }
+}
+
+.current {
+  width: 25px;
+  height: 25px;
+  background-color: $color-primary;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+}

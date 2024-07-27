@@ -1,0 +1,60 @@
+@import "../../helpers/css/constants.scss";
+
+.wrapper {
+  width: 320px;
+  height: auto;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  @media screen and (max-width: 768px) {
+    width: 85%;
+    margin: 30px auto;
+    padding: 25px;
+  }
+}
+
+.title {
+  font-size: 18px;
+  border-left: 4px solid $color-primary;
+  padding-left: 8px;
+}
+
+.contents {
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.name {
+  font-size: 16px;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.profileImg {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+  margin: 0 auto;
+}
+
+.iconWrapper {
+  margin: 12px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  img {
+    width: 20px;
+  }
+}
+
+.categoryWrapper {
+  margin: 12px 0;
+}
+
+.category {
+  display: block;
+  font-size: 14px;
+  line-height: 2em;
+  text-decoration: underline;
+}

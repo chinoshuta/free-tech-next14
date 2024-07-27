@@ -1,0 +1,52 @@
+@import "../../helpers/css/constants.scss";
+
+.wrapper {
+  width: 100%;
+  padding: 35px;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  transition: 0.15s;
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+  @media screen and (max-width: 420px) {
+    padding: 25px;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2em;
+  text-transform: none;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $color-primary;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin: 14px 0;
+}
+
+.text {
+  font-size: 14px;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.icon {
+  margin-right: 6px;
+  width: 14px;
+}
+
+.category {
+  margin-right: 6px;
+}
