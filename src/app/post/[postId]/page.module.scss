@@ -1,0 +1,53 @@
+@import "../../../helpers/css/constants.scss";
+
+.wrapper {
+  padding: 40px;
+  background: #fff;
+  & a {
+    text-decoration: underline;
+  }
+  @media screen and (max-width: 420px) {
+    padding: 25px;
+  }
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2em;
+  text-transform: none;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $color-primary;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 2em;
+  & h2 {
+    font-size: 18px;
+    border-left: 4px solid $color-primary;
+    padding-left: 8px;
+    margin: 12px 0 4px;
+  }
+  & blockquote {
+    padding: 0 1em;
+    border-left: 0.25em solid #d0d7de;
+    line-height: 1.4em;
+  }
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin: 14px 0;
+}
+
+.icon {
+  margin-right: 6px;
+  width: 13px;
+}
+
+.category {
+  margin-right: 6px;
+}

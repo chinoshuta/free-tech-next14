@@ -9,22 +9,26 @@ type Props = {
 };
 
 const Contents: React.FC<Props> = ({ content }) => {
+  const text = content.content.match(/[^\<\>]+(?=\<[^\<\>]+\>)|[^\<\>]+$/g);
+
   return (
-    <div className={styles.wrapper}>
-      <h1 className={styles.title}>{content.title}</h1>
-      <div className={styles.note}>
-        <div>
-          {/* <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} /> */}
-          {/* {content.category} */}
+    <Link href={`/post/${content.id}`}>
+      <div className={styles.wrapper}>
+        <h1 className={styles.title}>{content.title}</h1>
+        <div className={styles.note}>
+          <div>
+            {/* <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} /> */}
+            {/* {content.category} */}
+          </div>
+          <div>
+            {DateTime.fromJSDate(
+              new Date(content.publishedAt || "")
+            ).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}
+          </div>
         </div>
-        <div>
-          {DateTime.fromJSDate(
-            new Date(content.publishedAt || "")
-          ).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}
-        </div>
+        <div className={styles.text}>{text}</div>
       </div>
-      <div className={styles.text}>{content.content}</div>
-    </div>
+    </Link>
   );
 };
 

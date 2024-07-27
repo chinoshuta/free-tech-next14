@@ -1,0 +1,28 @@
+@import "../../helpers/css/constants";
+
+.wrapper {
+  padding: 40px 40px 10px;
+  background: #fff;
+  @media screen and (max-width: 420px) {
+    padding: 25px;
+  }
+
+  & a {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2em;
+  text-transform: none;
+  padding-bottom: 12px;
+  border-bottom: 1px solid $color-primary;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.8em;
+  margin: 12px 0 20px;
+}

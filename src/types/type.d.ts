@@ -16,7 +16,7 @@ export type Category = {
   name: string;
 };
 
-export type Data<T> = {
+export type DataList<T> = {
   contents: T[];
   totalCount: number;
   offset: number;

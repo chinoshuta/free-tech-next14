@@ -1,12 +1,11 @@
 import { client } from "@/libs/client";
 import styles from "./page.module.scss";
 import Contents from "@/components/Contents";
-import { Blog, Data } from "@/types/type";
+import { Blog, DataList } from "@/types/type";
 import PageNation from "@/components/PageNation";
-import { DateTime } from "luxon";
 
 export default async function Home() {
-  const blogs = await client.get<Data<Blog>>({ endpoint: "blogs" });
+  const blogs = await client.get<DataList<Blog>>({ endpoint: "blogs" });
   return (
     <div className={styles.wrapper}>
       {blogs.contents.map((blog) => (
