@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./index.module.scss";
 import Link from "next/link";
 import { Blog } from "@/types/type";
-import { DateTime } from "luxon";
+import { getFormatDateString } from "@/helpers/util";
 
 type Props = {
   content: Blog;
@@ -20,11 +20,7 @@ const Contents: React.FC<Props> = ({ content }) => {
             {/* <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} /> */}
             {/* {content.category} */}
           </div>
-          <div>
-            {DateTime.fromJSDate(
-              new Date(content.publishedAt || "")
-            ).toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}
-          </div>
+          <div>{getFormatDateString(content.publishDate)}</div>
         </div>
         <div className={styles.text}>{text}</div>
       </div>
