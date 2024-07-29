@@ -2,6 +2,7 @@ import { client } from "@/libs/client";
 import styles from "./page.module.scss";
 import { Blog } from "@/types/type";
 import { DateTime } from "luxon";
+import { getFormatDateString } from "@/helpers/util";
 
 export type Params = {
   postId: string;
@@ -12,7 +13,7 @@ const PostPage = async ({ params }: { params: Params }) => {
     endpoint: "blogs",
     contentId: params.postId,
   });
-  console.log(content);
+
   return (
     <>
       <div className={styles.wrapper}>
@@ -28,11 +29,7 @@ const PostPage = async ({ params }: { params: Params }) => {
               );
             })} */}
           </div>
-          <div>
-            {DateTime.fromJSDate(new Date(content.publishedAt)).toLocaleString(
-              DateTime.DATE_MED_WITH_WEEKDAY
-            )}
-          </div>
+          <div>{getFormatDateString(content.publishDate)}</div>
         </div>
         <p
           className={styles.text}

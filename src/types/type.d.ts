@@ -5,6 +5,7 @@ export type Blog = {
   eyecatch?: string;
   category: Category;
   publishedAt: string;
+  publishDate: string;
 };
 
 export type Category = {

@@ -34,6 +34,10 @@
     border-left: 0.25em solid #d0d7de;
     line-height: 1.4em;
   }
+  & img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .note {

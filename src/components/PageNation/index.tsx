@@ -16,7 +16,7 @@ const PageNation: React.FC<Props> = ({ totalPage, current }) => {
             {i + 1}
           </span>
         ) : (
-          <Link href={`/${i + 1}`} key={i}>
+          <Link href={`/?page=${i + 1}`} key={i}>
             <span className={styles.item}>{i + 1}</span>
           </Link>
         )
