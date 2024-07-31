@@ -2,8 +2,35 @@ import React from "react";
 import styles from "./index.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { client } from "@/libs/client";
+import { Blog, Category, DataList } from "@/types/type";
 
-const SideMenu: React.FC = () => {
+type CategoryWithPostCount = {
+  category: Category;
+  postCount: number;
+};
+
+const SideMenu: React.FC = async () => {
+  const categories = await client.get<DataList<Category>>({
+    customRequestInit: { cache: "no-store" },
+    endpoint: "categories",
+  });
+
+  const categoriesWithPostCount: CategoryWithPostCount[] = await Promise.all(
+    categories?.contents.map(async (category) => {
+      const blogs = await client.get<DataList<Blog>>({
+        endpoint: "blogs",
+        queries: {
+          filters: `categories[contains]${category.id}`,
+        },
+      });
+      return {
+        category,
+        postCount: blogs.totalCount,
+      };
+    })
+  );
+
   return (
     <div className={styles.wrapper}>
       <p className={styles.title}>プロフィール</p>
@@ -28,21 +55,21 @@ const SideMenu: React.FC = () => {
       </div>
       <p className={styles.title}>カテゴリ</p>
       <div className={styles.categoryWrapper}>
-        {/* {allContentfulCategory?.nodes.map(
-          (n) =>
-            getCategoryLength(n.slug!) > 0 && (
-              <OutboundLink
+        {categoriesWithPostCount?.map(
+          (category) =>
+            category.postCount > 0 && (
+              <Link
                 className={styles.category}
-                href={`/category/${n.slug}`}
-                key={n.slug}
+                href={`/category/${category.category.id}`}
+                key={category.category.id}
               >
                 <>
-                  {n.category}
-                  {`(${getCategoryLength(n.slug!)})`}
+                  {category.category.name}
+                  {`(${category.postCount})`}
                 </>
-              </OutboundLink>
+              </Link>
             )
-        )} */}
+        )}
       </div>
     </div>
   );

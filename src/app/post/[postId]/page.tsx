@@ -1,7 +1,6 @@
 import { client } from "@/libs/client";
 import styles from "./page.module.scss";
 import { Blog } from "@/types/type";
-import { DateTime } from "luxon";
 import { getFormatDateString } from "@/helpers/util";
 
 export type Params = {
@@ -12,6 +11,7 @@ const PostPage = async ({ params }: { params: Params }) => {
   const content = await client.get<Blog>({
     endpoint: "blogs",
     contentId: params.postId,
+    customRequestInit: { cache: "no-store" },
   });
 
   return (
