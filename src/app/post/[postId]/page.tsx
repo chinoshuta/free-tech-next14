@@ -2,6 +2,7 @@ import { client } from "@/libs/client";
 import styles from "./page.module.scss";
 import { Blog } from "@/types/type";
 import { getFormatDateString } from "@/helpers/util";
+import Link from "next/link";
 
 export type Params = {
   postId: string;
@@ -21,13 +22,17 @@ const PostPage = async ({ params }: { params: Params }) => {
         <div className={styles.note}>
           <div>
             {/* <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} /> */}
-            {/* {data.contentfulBlogPost?.category?.map((n, i) => {
+            {content.categories?.map((category, i) => {
               return (
-                <Link to={`/category/${n?.slug}`} className={styles.category}>
-                  {n?.category}
+                <Link
+                  href={`/category/${category.id}`}
+                  className={styles.category}
+                  key={category.id}
+                >
+                  {category.name}
                 </Link>
               );
-            })} */}
+            })}
           </div>
           <div>{getFormatDateString(content.publishDate)}</div>
         </div>

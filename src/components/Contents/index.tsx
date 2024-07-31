@@ -17,8 +17,10 @@ const Contents: React.FC<Props> = ({ content }) => {
         <h1 className={styles.title}>{content.title}</h1>
         <div className={styles.note}>
           <div>
+            {content.categories?.map((category, index) =>
+              index > 0 ? `,${category.name}` : category.name
+            )}
             {/* <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} /> */}
-            {/* {content.category} */}
           </div>
           <div>{getFormatDateString(content.publishDate)}</div>
         </div>
