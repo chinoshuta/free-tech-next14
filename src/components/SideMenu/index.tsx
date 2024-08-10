@@ -12,13 +12,14 @@ type CategoryWithPostCount = {
 
 const SideMenu: React.FC = async () => {
   const categories = await client.get<DataList<Category>>({
-    //customRequestInit: { cache: "no-store" },
+    customRequestInit: { next: { tags: ["categories"] } },
     endpoint: "categories",
   });
 
   const categoriesWithPostCount: CategoryWithPostCount[] = await Promise.all(
     categories?.contents.map(async (category) => {
       const blogs = await client.get<DataList<Blog>>({
+        customRequestInit: { next: { tags: ["categories"] } },
         endpoint: "blogs",
         queries: {
           filters: `categories[contains]${category.id}`,

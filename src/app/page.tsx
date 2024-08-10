@@ -6,8 +6,8 @@ import PageNation from "@/components/PageNation";
 
 const Page = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const { page } = searchParams;
-  const blogs = await client.get<DataList<Blog>>({
-    //customRequestInit: { cache: "no-store" },
+  const posts = await client.get<DataList<Blog>>({
+    customRequestInit: { next: { tags: ["posts"] } },
     endpoint: "blogs",
     queries: {
       orders: "-publishDate",
@@ -15,14 +15,15 @@ const Page = async ({ searchParams }: { searchParams: { page?: string } }) => {
       offset: page ? (Number(page) - 1) * 5 : 0,
     },
   });
+
   return (
     <div className={styles.wrapper}>
-      {blogs.contents.map((blog) => (
-        <Contents content={blog} key={blog.id} />
+      {posts.contents.map((posts) => (
+        <Contents content={posts} key={posts.id} />
       ))}
       <PageNation
         current={page ? Number(page) : 1}
-        totalPage={Math.ceil(blogs.totalCount / 5)}
+        totalPage={Math.ceil(posts.totalCount / 5)}
       />
     </div>
   );
