@@ -1,5 +1,9 @@
 @import "../helpers/css/constants";
 
+.body {
+  font-family: var(--font-lato), var(--font-notojp);
+}
+
 .wrapper {
   display: flex;
   justify-content: center;

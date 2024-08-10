@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import styles from "./layout.module.scss";
 import SideMenu from "@/components/SideMenu";
 import "normalize.css/normalize.css";
 import "@/helpers/css/style.scss";
 import { Suspense } from "react";
+import { Noto_Sans_JP, Lato } from "next/font/google";
+import clsx from "clsx";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoJP = Noto_Sans_JP({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-notojp",
+});
+const lato = Lato({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-lato",
+});
 
 export const metadata: Metadata = {
   title: "free技術log",
@@ -21,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
-      <body>
+    <html lang="ja" className={clsx(notoJP.variable, lato.variable)}>
+      <body className={styles.body}>
         <Header />
         <div className={styles.wrapper}>
           <div className={styles.contentsWrapper}>
