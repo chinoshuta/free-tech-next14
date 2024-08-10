@@ -3,6 +3,8 @@ import styles from "./page.module.scss";
 import { Blog } from "@/types/type";
 import { getFormatDateString } from "@/helpers/util";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
 
 export type Params = {
   postId: string;
@@ -21,7 +23,7 @@ const PostPage = async ({ params }: { params: Params }) => {
         <h1 className={styles.title}>{content.title}</h1>
         <div className={styles.note}>
           <div>
-            {/* <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} /> */}
+            <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} />
             {content.categories?.map((category, i) => {
               return (
                 <Link
