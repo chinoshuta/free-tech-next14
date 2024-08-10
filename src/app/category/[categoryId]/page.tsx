@@ -12,7 +12,7 @@ export type Params = {
 const Page = async ({ params }: { params: Params }) => {
   const { page, categoryId } = params;
   const blogs = await client.get<DataList<Blog>>({
-    customRequestInit: { cache: "no-store" },
+    //customRequestInit: { cache: "no-store" },
     endpoint: "blogs",
     queries: {
       orders: "-publishDate",

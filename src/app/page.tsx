@@ -7,7 +7,7 @@ import PageNation from "@/components/PageNation";
 const Page = async ({ searchParams }: { searchParams: { page?: string } }) => {
   const { page } = searchParams;
   const blogs = await client.get<DataList<Blog>>({
-    customRequestInit: { cache: "no-store" },
+    //customRequestInit: { cache: "no-store" },
     endpoint: "blogs",
     queries: {
       orders: "-publishDate",

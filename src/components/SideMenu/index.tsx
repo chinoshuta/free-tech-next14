@@ -12,7 +12,7 @@ type CategoryWithPostCount = {
 
 const SideMenu: React.FC = async () => {
   const categories = await client.get<DataList<Category>>({
-    customRequestInit: { cache: "no-store" },
+    //customRequestInit: { cache: "no-store" },
     endpoint: "categories",
   });
 

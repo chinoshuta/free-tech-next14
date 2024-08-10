@@ -14,7 +14,7 @@ const PostPage = async ({ params }: { params: Params }) => {
   const content = await client.get<Blog>({
     endpoint: "blogs",
     contentId: params.postId,
-    customRequestInit: { cache: "no-store" },
+    //customRequestInit: { cache: "no-store" },
   });
 
   return (
