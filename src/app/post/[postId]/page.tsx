@@ -23,12 +23,13 @@ export type Params = {
 
 const PostPage = async ({ params }: { params: Params }) => {
   const searchParams = useSearchParams();
-  const isDraft = searchParams.get("isDraft");
-  const content = isDraft
+  const draftKey = searchParams.get("draftKey");
+  const content = draftKey
     ? await client.get<Blog>({
         endpoint: "blogs",
+        contentId: params.postId,
         queries: {
-          draftKey: params.postId,
+          draftKey,
         },
         customRequestInit: { next: { revalidate: 0 } },
       })
