@@ -6,6 +6,7 @@ import "@/helpers/css/style.scss";
 import "modern-css-reset";
 import { Suspense } from "react";
 import { Noto_Sans_JP, Lato } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import clsx from "clsx";
 
 const notoJP = Noto_Sans_JP({
@@ -32,6 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={clsx(notoJP.variable, lato.variable)}>
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID ?? ""} />
       <body className={styles.body}>
         <Header />
         <div className={styles.wrapper}>
