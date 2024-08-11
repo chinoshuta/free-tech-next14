@@ -44,7 +44,7 @@ const SideMenu: React.FC = async () => {
           alt="author"
         />
         <p className={styles.name}>shuta</p>
-        <p>フリーランスのフロントエンドエンジニア</p>
+        <p>フリーランスエンジニア</p>
         <p>
           React、React系のフレームワークを用いた開発をメインに行なっています
         </p>
