@@ -5,7 +5,6 @@ import { getFormatDateString } from "@/helpers/util";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
-import { useSearchParams } from "next/navigation";
 
 export const generateStaticParams = async () => {
   const posts = await client.get<DataList<Blog>>({
@@ -21,17 +20,22 @@ export type Params = {
   postId: string;
 };
 
-const PostPage = async ({ params }: { params: Params }) => {
-  const searchParams = useSearchParams();
-  const draftKey = searchParams.get("draftKey");
+const PostPage = async ({
+  params,
+  searchParams,
+}: {
+  params: Params;
+  searchParams: { [key: string]: string | string[] | undefined };
+}) => {
+  const { draftKey } = searchParams;
   const content = draftKey
     ? await client.get<Blog>({
         endpoint: "blogs",
         contentId: params.postId,
         queries: {
-          draftKey,
+          draftKey: draftKey as string,
         },
-        customRequestInit: { next: { revalidate: 0 } },
+        customRequestInit: { next: { tags: [`post-${params.postId}`] } },
       })
     : await client.get<Blog>({
         endpoint: "blogs",
