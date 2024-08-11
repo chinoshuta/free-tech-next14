@@ -29,6 +29,7 @@ const PostPage = async ({
     },
     customRequestInit: { next: { revalidate: 0 } },
   });
+  if (!content?.id) redirect(`/post/${params.postId}`);
 
   return (
     <>
