@@ -1,21 +1,11 @@
 import { client } from "@/libs/client";
 import styles from "../page.module.scss";
-import { Blog, DataList } from "@/types/type";
+import { Blog } from "@/types/type";
 import { getFormatDateString } from "@/helpers/util";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
 import { redirect } from "next/navigation";
-
-export const generateStaticParams = async () => {
-  const posts = await client.get<DataList<Blog>>({
-    endpoint: "blogs",
-    queries: {
-      orders: "-publishDate",
-    },
-  });
-  return posts?.contents?.map((post) => ({ slug: post.id }));
-};
 
 export type Params = {
   postId: string;
@@ -30,13 +20,14 @@ const PostPage = async ({
 }) => {
   const { draftKey } = searchParams;
   if (!draftKey) redirect(`/post/${params.postId}`);
+
   const content = await client.get<Blog>({
     endpoint: "blogs",
     contentId: params.postId,
     queries: {
       draftKey: draftKey as string,
     },
-    customRequestInit: { next: { tags: [`post-${params.postId}`] } },
+    customRequestInit: { next: { revalidate: 0 } },
   });
 
   return (
