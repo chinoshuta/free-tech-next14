@@ -3,9 +3,9 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createHmac, timingSafeEqual } from "crypto";
 
 export async function POST(req: NextRequest) {
-  const params = await req.json();
   const bodyText = await req.text();
   const bodyBuffer = Buffer.from(bodyText, "utf-8");
+  const params = JSON.parse(bodyText);
 
   const secret = process.env.MICROCMS_SECRET;
   if (!secret) {
