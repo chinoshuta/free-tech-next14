@@ -15,6 +15,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@n8tb1t/use-scroll-position": "^2.0.3",
     "clsx": "^2.1.1",
+    "crypto": "^1.0.1",
     "luxon": "^3.4.4",
     "microcms-js-sdk": "^3.1.2",
     "modern-css-reset": "^1.4.0",
