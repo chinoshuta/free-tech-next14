@@ -19,7 +19,9 @@ const SideMenu: React.FC = async () => {
   const categoriesWithPostCount: CategoryWithPostCount[] = await Promise.all(
     categories?.contents.map(async (category) => {
       const blogs = await client.get<DataList<Blog>>({
-        customRequestInit: { next: { tags: ["categories"] } },
+        customRequestInit: {
+          next: { tags: ["categories", `category-${category.id}`] },
+        },
         endpoint: "blogs",
         queries: {
           filters: `categories[contains]${category.id}`,

@@ -23,3 +23,28 @@ export type DataList<T> = {
   offset: number;
   limit: number;
 };
+
+export type ContentsStatus = "PUBLISH" | "DRAFT" | "CLOSED";
+
+export type WebHookParams<T> = {
+  service: string;
+  api: string;
+  id: string;
+  type: string;
+  contents: {
+    old: {
+      id: string;
+      status: ContentsStatus[];
+      draftKey: string | null;
+      publishValue: T;
+      draftValue: T | null;
+    };
+    new: {
+      id: string;
+      status: ContentsStatus[];
+      draftKey: string | null;
+      publishValue: T;
+      draftValue: T | null;
+    };
+  };
+};
