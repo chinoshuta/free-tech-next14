@@ -45,13 +45,13 @@ export async function POST(req: NextRequest) {
   if (isFromBlogs(params)) {
     revalidateTag("posts");
     revalidateTag(`post-${params.contents.new.id}`);
-    const updateTargetCategoryIds: string[] = [];
+    const updateTargetOldCategoryIds: string[] = [];
     params.contents.old.publishValue.categories.forEach((category) => {
-      updateTargetCategoryIds.push(category.id);
+      updateTargetOldCategoryIds.push(category.id);
       revalidateTag(`category-${category.id}`);
     });
     params.contents.new.publishValue.categories.forEach((category) => {
-      if (!updateTargetCategoryIds.includes(category.id)) {
+      if (!updateTargetOldCategoryIds.includes(category.id)) {
         revalidateTag(`category-${category.id}`);
       }
     });
