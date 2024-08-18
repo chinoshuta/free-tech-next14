@@ -6,6 +6,7 @@ export async function POST(req: NextRequest) {
   const bodyText = await req.text();
   const bodyBuffer = Buffer.from(bodyText, "utf-8");
   const params = JSON.parse(bodyText);
+  console.log(params);
 
   const secret = process.env.MICROCMS_SECRET;
   if (!secret) {
