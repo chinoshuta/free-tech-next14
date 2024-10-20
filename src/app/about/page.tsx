@@ -3,7 +3,7 @@ import styles from "./page.module.scss";
 const AboutPage = () => {
   return (
     <>
-      <div className={styles.wrapper}>
+      <section className={styles.wrapper}>
         <h1 className={styles.title}>当ブログについて</h1>
         <p className={styles.text}>
           当ブログはフリーランスエンジニアの筆者が運営するブログです。
@@ -58,7 +58,7 @@ const AboutPage = () => {
           </ul>
           ※詳細な経歴をご希望の方は別途お問い合わせください
         </div>
-      </div>
+      </section>
     </>
   );
 };
