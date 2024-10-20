@@ -1,9 +1,7 @@
-@import "../helpers/css/constants";
-
 .notFound {
   height: 200px;
   font-size: 28px;
-  color: $color-primary;
+  color: var(--color-primary);
   text-align: center;
   background-color: #f8fbfb;
   display: flex;

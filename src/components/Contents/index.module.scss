@@ -1,15 +1,13 @@
-@import "../../helpers/css/constants.scss";
-
 .wrapper {
   padding: 35px;
   cursor: pointer;
   border: 1px solid white;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   margin-bottom: 30px;
   border-radius: 8px;
   transition: 0.15s;
   &:hover {
-    border: 1px solid $color-primary;
+    border: 1px solid var(--color-primary);
   }
   @media screen and (max-width: 420px) {
     padding: 25px;
@@ -22,7 +20,7 @@
   line-height: 1.2em;
   text-transform: none;
   padding-bottom: 12px;
-  border-bottom: 1px solid $color-primary;
+  border-bottom: 1px solid var(--color-primary);
 }
 
 .note {

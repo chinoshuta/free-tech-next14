@@ -1,5 +1,3 @@
-@import "../helpers/css/constants";
-
 .wrapper {
-  background-color: $color-secondary;
+  background-color: var(--color-secondary);
 }

@@ -1,11 +1,9 @@
-@import "../../helpers/css/constants.scss";
-
 .root {
   top: 0;
   position: sticky;
   transition: 0.4s;
   z-index: 999;
-  background-color: $color-primary;
+  background-color: var(--color-primary);
   color: white;
   padding: 18px 60px;
   filter: drop-shadow(rgba(33, 0, 28, 0.2) 0px 2px 16px);

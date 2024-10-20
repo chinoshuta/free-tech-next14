@@ -1,7 +1,11 @@
-@import "./constants";
+:root {
+  --color-primary: #254678;
+  --color-secondary: #f1f4fb;
+  --color-white: #fff;
+}
 
 body {
-  background-color: $color-secondary;
+  background-color: var(--color-secondary);
 }
 
 ul {
