@@ -29,10 +29,10 @@ const PostPage = async ({ params }: { params: Params }) => {
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <article className={styles.wrapper}>
         <h1 className={styles.title}>{content.title}</h1>
         <div className={styles.note}>
-          <div>
+          <nav>
             <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} />
             {content.categories?.map((category, i) => {
               return (
@@ -45,7 +45,7 @@ const PostPage = async ({ params }: { params: Params }) => {
                 </Link>
               );
             })}
-          </div>
+          </nav>
           <div>{getFormatDateString(content.publishDate)}</div>
         </div>
         <div
@@ -54,7 +54,7 @@ const PostPage = async ({ params }: { params: Params }) => {
             __html: content.content,
           }}
         />
-      </div>
+      </article>
     </>
   );
 };

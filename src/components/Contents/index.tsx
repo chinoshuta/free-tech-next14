@@ -15,7 +15,7 @@ const Contents: React.FC<Props> = ({ content }) => {
 
   return (
     <Link href={`/post/${content.id}`}>
-      <div className={styles.wrapper}>
+      <article className={styles.wrapper}>
         <h1 className={styles.title}>{content.title}</h1>
         <div className={styles.note}>
           <div>
@@ -27,7 +27,7 @@ const Contents: React.FC<Props> = ({ content }) => {
           <div>{getFormatDateString(content.publishDate)}</div>
         </div>
         <div className={styles.text}>{text}</div>
-      </div>
+      </article>
     </Link>
   );
 };

@@ -35,7 +35,7 @@ const SideMenu: React.FC = async () => {
   );
 
   return (
-    <div className={styles.wrapper}>
+    <aside className={styles.wrapper}>
       <p className={styles.title}>プロフィール</p>
       <div className={styles.contents}>
         <Image
@@ -74,7 +74,7 @@ const SideMenu: React.FC = async () => {
             )
         )}
       </div>
-    </div>
+    </aside>
   );
 };
 
