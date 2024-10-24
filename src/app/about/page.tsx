@@ -49,6 +49,8 @@ const AboutPage = () => {
             <li>TypeScript</li>
             <li>React</li>
             <li>Next.js</li>
+            <li>Vue.js</li>
+            <li>Nuxt.js</li>
             <li>Go</li>
             <li>SQL</li>
             <li>ReactNative</li>
