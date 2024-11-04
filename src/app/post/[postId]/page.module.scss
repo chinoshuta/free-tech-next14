@@ -10,7 +10,7 @@
 }
 
 .title {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
   line-height: 1.2em;
   text-transform: none;
@@ -22,10 +22,11 @@
   font-size: 14px;
   line-height: 2em;
   & h2 {
+    width: fit-content;
     font-size: 18px;
-    border-left: 4px solid var(--color-primary);
-    padding-left: 8px;
-    margin: 12px 0 4px;
+    border-bottom: 4px solid var(--color-primary);
+
+    margin: 18px 0 4px;
   }
   & blockquote {
     padding: 0 1em;
