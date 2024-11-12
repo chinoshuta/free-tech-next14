@@ -54,6 +54,9 @@ const SideMenu: React.FC = async () => {
           <Link href="https://github.com/chinoshuta" target="_blank">
             <Image src="/github-icon.png" width={20} height={20} alt="github" />
           </Link>
+          <Link href="https://qiita.com/chinoshuta" target="_blank">
+            <Image src="/qiita-icon.png" width={20} height={20} alt="github" />
+          </Link>
         </div>
       </div>
       <p className={styles.title}>カテゴリ</p>
