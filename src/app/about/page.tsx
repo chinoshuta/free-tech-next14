@@ -10,10 +10,10 @@ const AboutPage = () => {
           <br />
           フリーランスとして活動していく中での出来事や、技術情報について主に投稿していきます。
           <br />
-          記事やお仕事について何かありましたら以下までお問い合せください。
+          ご連絡等は以下からお願いします。
           <br />
-          <a href="mailto:free.tech.frontend@gmail.com">
-            free.tech.frontend@gmail.com
+          <a href="https://linktr.ee/shutachino" target="_blank">
+            https://linktr.ee/shutachino
           </a>
         </p>
         <h1 className={styles.title}>筆者について</h1>
