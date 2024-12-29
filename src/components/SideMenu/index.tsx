@@ -51,13 +51,21 @@ const SideMenu: React.FC = async () => {
           React、React系のフレームワークを用いた開発をメインに行なっています
         </p>
         <div className={styles.iconWrapper}>
-          <Link href="https://github.com/chinoshuta" target="_blank">
+          <Link href="https://linktr.ee/shutachino" target="_blank">
+            <Image
+              src="/linktree-icon.webp"
+              width={25}
+              height={25}
+              alt="linktree"
+            />
+          </Link>
+          {/* <Link href="https://github.com/chinoshuta" target="_blank">
             <Image src="/github-icon.png" width={20} height={20} alt="github" />
           </Link>
           <Link href="https://qiita.com/chinoshuta" target="_blank">
             <Image src="/qiita-icon.png" width={20} height={20} alt="github" />
           </Link>
-          {/* <Link href="https://x.com/shuta_fr?s=21" target="_blank">
+          <Link href="https://x.com/shuta_fr?s=21" target="_blank">
             <Image
               src="/x-icon.png"
               width={17}
