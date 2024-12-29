@@ -27,7 +27,7 @@ const AboutPage = () => {
           実際にユーザーの目に触れる部分をつくる手応えや、Reactを用いた開発体験の面白さから、今後はReactを用いたフロントエンド開発をメインに行なっていきたいと思っております。
         </p>
         <h1 className={styles.title}>経歴</h1>
-        <p className={styles.text}>
+        <div className={styles.text}>
           <ul>
             <li>
               SIerのパートナー企業で主にJava・C#を用いた公共系システムの開発を約3年半
@@ -39,7 +39,7 @@ const AboutPage = () => {
               フリーランスエンジニアとしてフロントエンド開発をメインに案件に参画（現在）
             </li>
           </ul>
-        </p>
+        </div>
         <h1 className={styles.title}>経験技術</h1>
         <div className={styles.text}>
           <ul>
