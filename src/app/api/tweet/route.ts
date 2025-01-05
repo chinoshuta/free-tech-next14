@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
     accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
   } as any);
   await userClient.v2.tweet(
-    `ブログを投稿しました。「${params.contents.new.publishValue.title}」https://free-tech.biz/post${params.contents.new.publishValue.id}`
+    `ブログを投稿しました。「${params.contents.new.publishValue.title}」https://free-tech.biz/post/${params.contents.new.publishValue.id}`
   );
   return new NextResponse("success tweet", { status: 200 });
 }
