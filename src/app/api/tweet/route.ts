@@ -39,8 +39,13 @@ export async function POST(req: NextRequest) {
   if (!isFromBlogs(params) || params.contents.old) {
     return new NextResponse("invalid api", { status: 400 });
   }
-  const userClient = new TwitterApi(process.env.TWITTER_BARER_TOKEN ?? "");
-  await userClient.v1.tweet(
+  const userClient = new TwitterApi({
+    appKey: process.env.TWITTER_API_KEY ?? "",
+    appSecret: process.env.TWITTER_API_SECRET,
+    accessToken: process.env.TWITTER_ACCESS_TOKEN,
+    accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+  } as any);
+  await userClient.v2.tweet(
     `ブログを投稿しました。「${params.contents.new.publishValue.title}」https://free-tech.biz/post${params.contents.new.publishValue.id}`
   );
   return new NextResponse("success tweet", { status: 200 });
