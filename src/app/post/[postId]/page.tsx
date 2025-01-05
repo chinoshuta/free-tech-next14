@@ -22,13 +22,13 @@ export type Params = {
 };
 
 const PostPage = async ({ params }: { params: Params }) => {
-  try {
-    const content = await client.get<Blog>({
-      endpoint: "blogs",
-      contentId: params.postId,
-      customRequestInit: { next: { tags: [`post-${params.postId}`] } },
-    });
-  } catch {
+  const content = await client.get<Blog>({
+    endpoint: "blogs",
+    contentId: params.postId,
+    customRequestInit: { next: { tags: [`post-${params.postId}`] } },
+  });
+
+  if (!content) {
     return <NotFound />;
   }
 
