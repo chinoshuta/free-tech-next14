@@ -41,7 +41,8 @@ export async function POST(req: NextRequest) {
     return new NextResponse("invalid api", { status: 400 });
   }
   const appOnlyClient = new TwitterApi(process.env.TWITTER_BARER_TOKEN ?? "");
-  appOnlyClient.v2.tweet(
+  await appOnlyClient.v2.tweet(
     `ブログを投稿しました。「${params.contents.new.publishValue.title}」https://free-tech.biz/post${params.contents.new.publishValue.id}`
   );
+  return new NextResponse("success tweet", { status: 200 });
 }
