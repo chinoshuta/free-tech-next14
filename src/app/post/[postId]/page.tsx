@@ -22,46 +22,46 @@ export type Params = {
 };
 
 const PostPage = async ({ params }: { params: Params }) => {
-  const content = await client.get<Blog>({
-    endpoint: "blogs",
-    contentId: params.postId,
-    customRequestInit: { next: { tags: [`post-${params.postId}`] } },
-  });
+  try {
+    const content = await client.get<Blog>({
+      endpoint: "blogs",
+      contentId: params.postId,
+      customRequestInit: { next: { tags: [`post-${params.postId}`] } },
+    });
 
-  if (!content) {
+    return (
+      <>
+        <article className={styles.wrapper}>
+          <h1 className={styles.title}>{content.title}</h1>
+          <div className={styles.note}>
+            <nav>
+              <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} />
+              {content.categories?.map((category, i) => {
+                return (
+                  <Link
+                    href={`/category/${category.id}`}
+                    className={styles.category}
+                    key={category.id}
+                  >
+                    {category.name}
+                  </Link>
+                );
+              })}
+            </nav>
+            <div>{getFormatDateString(content.publishDate)}</div>
+          </div>
+          <div
+            className={styles.text}
+            dangerouslySetInnerHTML={{
+              __html: content.content,
+            }}
+          />
+        </article>
+      </>
+    );
+  } catch {
     return <NotFound />;
   }
-
-  return (
-    <>
-      <article className={styles.wrapper}>
-        <h1 className={styles.title}>{content.title}</h1>
-        <div className={styles.note}>
-          <nav>
-            <FontAwesomeIcon className={styles.icon} icon={faFolderOpen} />
-            {content.categories?.map((category, i) => {
-              return (
-                <Link
-                  href={`/category/${category.id}`}
-                  className={styles.category}
-                  key={category.id}
-                >
-                  {category.name}
-                </Link>
-              );
-            })}
-          </nav>
-          <div>{getFormatDateString(content.publishDate)}</div>
-        </div>
-        <div
-          className={styles.text}
-          dangerouslySetInnerHTML={{
-            __html: content.content,
-          }}
-        />
-      </article>
-    </>
-  );
 };
 
 export default PostPage;
