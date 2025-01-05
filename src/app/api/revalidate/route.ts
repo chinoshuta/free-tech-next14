@@ -44,13 +44,13 @@ export async function POST(req: NextRequest) {
 
   if (isFromBlogs(params)) {
     revalidateTag("posts");
-    revalidateTag(`post-${params.contents.new.id}`);
+    revalidateTag(`post-${params.contents.new?.id}`);
     const updateTargetOldCategoryIds: string[] = [];
-    params.contents.old.publishValue.categories.forEach((category) => {
+    params.contents.old?.publishValue.categories.forEach((category) => {
       updateTargetOldCategoryIds.push(category.id);
       revalidateTag(`category-${category.id}`);
     });
-    params.contents.new.publishValue.categories.forEach((category) => {
+    params.contents.new?.publishValue.categories.forEach((category) => {
       if (!updateTargetOldCategoryIds.includes(category.id)) {
         revalidateTag(`category-${category.id}`);
       }
