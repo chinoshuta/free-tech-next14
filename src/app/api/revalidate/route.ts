@@ -44,7 +44,7 @@ export async function POST(req: NextRequest) {
 
   if (isFromBlogs(params)) {
     revalidateTag("posts");
-    revalidateTag(`post-${params.contents.new?.id}`);
+    revalidateTag(`post-${params.contents.new?.id || params.contents.old.id}`);
     const updateTargetOldCategoryIds: string[] = [];
     params.contents.old?.publishValue.categories.forEach((category) => {
       updateTargetOldCategoryIds.push(category.id);
