@@ -2,7 +2,6 @@ import { revalidateTag } from "next/cache";
 import { NextResponse, type NextRequest } from "next/server";
 import { createHmac, timingSafeEqual } from "crypto";
 import { Blog, Category, WebHookParams } from "@/types/type";
-import { Arapey } from "next/font/google";
 import { TwitterApi } from "twitter-api-v2";
 
 const isFromBlogs = (
@@ -40,8 +39,8 @@ export async function POST(req: NextRequest) {
   if (!isFromBlogs(params) || params.contents.old) {
     return new NextResponse("invalid api", { status: 400 });
   }
-  const appOnlyClient = new TwitterApi(process.env.TWITTER_BARER_TOKEN ?? "");
-  await appOnlyClient.v2.tweet(
+  const userClient = new TwitterApi(process.env.TWITTER_BARER_TOKEN ?? "");
+  await userClient.v1.tweet(
     `ブログを投稿しました。「${params.contents.new.publishValue.title}」https://free-tech.biz/post${params.contents.new.publishValue.id}`
   );
   return new NextResponse("success tweet", { status: 200 });
