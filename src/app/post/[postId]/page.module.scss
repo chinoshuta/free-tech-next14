@@ -45,6 +45,9 @@
     overflow: auto;
     padding: 1em;
   }
+  a {
+    word-break: break-all;
+  }
   code {
     word-wrap: normal;
     background: none;
