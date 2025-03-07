@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { Noto_Sans_JP, Lato } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import clsx from "clsx";
+import { Analytics } from "@vercel/analytics/react";
 
 const notoJP = Noto_Sans_JP({
   weight: ["400"],
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className={clsx(notoJP.variable, lato.variable)}>
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID ?? ""} />
+      <Analytics />
       <body className={styles.body}>
         <Header />
         <div className={styles.wrapper}>
