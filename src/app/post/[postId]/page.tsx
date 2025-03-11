@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderOpen } from "@fortawesome/free-regular-svg-icons";
 import { NotFound } from "@/app/not-found";
+import type { Metadata } from "next";
 
 export const generateStaticParams = async () => {
   const posts = await client.get<DataList<Blog>>({
@@ -19,6 +20,21 @@ export const generateStaticParams = async () => {
 
 export type Params = {
   postId: string;
+};
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> => {
+  const content = await client.get<Blog>({
+    endpoint: "blogs",
+    contentId: params.postId,
+    customRequestInit: { next: { tags: [`post-${params.postId}`] } },
+  });
+  return {
+    title: `${content.title} - free技術log`,
+  };
 };
 
 const PostPage = async ({ params }: { params: Params }) => {

@@ -3,6 +3,7 @@ import styles from "./page.module.scss";
 import Contents from "@/components/Contents";
 import { Blog, Category, DataList } from "@/types/type";
 import PageNation from "@/components/PageNation";
+import { Metadata } from "next";
 
 export const generateStaticParams = async () => {
   const categories = await client.get<DataList<Category>>({
@@ -17,6 +18,21 @@ export const generateStaticParams = async () => {
 export type Params = {
   categoryId: string;
   page?: string;
+};
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> => {
+  const content = await client.get<Category>({
+    endpoint: "categories",
+    contentId: params.categoryId,
+    customRequestInit: { next: { tags: [`category-${params.categoryId}`] } },
+  });
+  return {
+    title: `カテゴリ：${content.name} - free技術log`,
+  };
 };
 
 const Page = async ({ params }: { params: Params }) => {
